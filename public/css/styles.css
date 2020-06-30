@@ -172,6 +172,12 @@ td {
   }
 }
 
+@media (max-width: 500px) {
+  table {
+    width: 300px;
+  }
+}
+
 /* Pagination */
 .pagination {
   margin-top: 3rem;

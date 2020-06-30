@@ -1,0 +1,28 @@
+<%- include("partials/header"); -%>
+
+<div class="container body-index-container">
+  <div class="row">
+    <a class="left-tab active-tab col-6" href="/">
+      <h2>Live Rates</h2>
+    </a>
+    <a class="right-tab inactive-tab col-6" href="/list/1">
+      <h2>Currency List</h2>
+    </a>
+  </div>
+  <div class="row">
+    <div class="form-container col-12">
+      <h1>Cryptocurrency Exchange Rates</h1>
+      <form action="/" method="POST">
+        <input type="text" value="BTC" name="baseCurrency" />
+        <span> to </span>
+        <input type="text" value="USD" name="quoteCurrency" />
+        <button class="btn btn-light btn-go" type="submit">Go</button>
+      </form>
+      <% if (message) { %>
+      <h4 class="exchange-message"><%= message %></h4>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer"); -%>

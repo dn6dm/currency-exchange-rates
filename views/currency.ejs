@@ -1,0 +1,73 @@
+<% include("partials/header"); %> <%- include("partials/header"); -%>
+
+<div class="container body-container">
+  <div class="row">
+    <a class="left-tab inactive-tab col-6" href="/">
+      <h2>Live Rates</h2>
+    </a>
+    <a class="right-tab active-tab col-6" href="/list/1">
+      <h2>Currency List</h2>
+    </a>
+  </div>
+  <div class="row">
+    <div class="form-container col-12">
+      <h1><%= baseSymbol %></h1>
+      <div class="row">
+        <div class="col-lg-6">
+          <table>
+            <tr>
+              <th class="ten-rates-header">
+                <p>Symbol</p>
+              </th>
+              <th class="ten-rates-header">
+                <p>Exchange Rate</p>
+              </th>
+            </tr>
+            <% for (let i = 0; i < Math.ceil(exchangeRates.length / 2); i++) { %>
+              <% if (i === 0) { %>
+                <tr class="ten-rates-row first-mobile-row">
+              <% } else { %>
+                <tr class="ten-rates-row">
+              <% } %>
+              <td>
+                <p><a href="/currency/<%= exchangeRates[i].asset_id_quote %>"><%= exchangeRates[i].asset_id_quote %></a></p>
+              </td>
+              <td>
+                <p><%= exchangeRates[i].rate %></p>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+        <div class="col-lg-6">
+          <table>
+            <tr class="mobile-invisible">
+              <th class="ten-rates-header">
+                <p>Symbol</p>
+              </th>
+              <th class="ten-rates-header">
+                <p>Exchange Rate</p>
+              </th>
+            </tr>
+            <% for (let i = Math.ceil(exchangeRates.length / 2); i < exchangeRates.length; i++) { %>
+              <% if (i === exchangeRates.length - 1) { %>
+                <tr class="ten-rates-row last-mobile-row">
+              <% } else { %>
+                <tr class="ten-rates-row">
+              <% } %>
+              <td>
+                <p><a href="/currency/<%= exchangeRates[i].asset_id_quote %>"><%= exchangeRates[i].asset_id_quote %></a></p>
+              </td>
+              <td>
+                <p><%= exchangeRates[i].rate %></p>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer"); -%> <% include("partials/footer"); %>

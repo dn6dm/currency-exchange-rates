@@ -1,0 +1,100 @@
+<%- include("partials/header"); -%>
+
+<div class="container body-container">
+  <div class="row">
+    <a class="left-tab inactive-tab col-6" href="/">
+      <h2>Live Rates</h2>
+    </a>
+    <a class="right-tab active-tab col-6" href="/list/1">
+      <h2>Currency List</h2>
+    </a>
+  </div>
+  <div class="row">
+    <div class="form-container col-12">
+      <h1>List of All Currencies</h1>
+      <div class="row">
+        <div class="col-lg-6">
+          <table>
+            <tr class="header-row">
+              <th><p>Currency Name</p></th>
+              <th><p>Symbol</p></th>
+              <th><p>Price in USD</p></th>
+            </tr>
+            <% for (let i = 100 * (currentPage - 1); i < 100 * (currentPage - 1) + 50 && i < allCurrencies.length; i++) { %>
+              <% if (i === 100 * (currentPage-1)) { %>
+                <tr class="currency-list-row first-mobile-row">
+              <% } else { %>
+                <tr class="currency-list-row">
+              <% } %>
+              <td>
+                <p>
+                  <a href="/currency/<%= allCurrencies[i].asset_id %>"><%= allCurrencies[i].name %></a>
+                </p>
+              </td>
+              <td>
+                <p>
+                  <%= allCurrencies[i].asset_id %>
+                </p>
+              </td>
+              <td>
+                <p><%= allCurrencies[i].price_usd %></p>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+        <div class="col-lg-6">
+          <table>
+            <tr class="mobile-invisible">
+              <th><p>Currency Name</p></th>
+              <th><p>Symbol</p></th>
+              <th><p>Price in USD</p></th>
+            </tr>
+            <% for (let i = 100 * (currentPage - 1) + 50; i < 100 * currentPage && i < allCurrencies.length; i++) { %>
+              <% if (i === 100 * currentPage - 1 || i === allCurrencies.length - 1) { %>
+                <tr class="currency-list-row last-mobile-row">
+              <% } else { %>
+                <tr class="currency-list-row">
+              <% } %>
+              <td>
+                <p>
+                  <a href="/currency/<%= allCurrencies[i].asset_id %>"><%= allCurrencies[i].name %></a>
+                </p>
+              </td>
+              <td>
+                <p>
+                  <%= allCurrencies[i].asset_id %>
+                </p>
+              </td>
+              <td>
+                <p><%= allCurrencies[i].price_usd %></p>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+      </div>
+      <nav aria-label="Currency list pages">
+          <ul class="pagination justify-content-center">
+            <% if (currentPage > 1) { %>
+              <li class="page-item"><a class="page-link" href="/list/<%= currentPage - 1 %>">Previous</a></li>
+            <% } %>
+            <% for (let i = 0; i < pagination.length; i++) { %>
+              <% if (pagination[i] === currentPage) { %>
+                <li class="page-item"><a class="page-link"><%= pagination[i] %></a></li>
+              <% } else if (pagination[i] === 0) { %>
+                <li class="page-item"><a class="page-link">...</a></li>
+              <% } else { %>
+                <li class="page-item"><a class="page-link" href="/list/<%= pagination[i] %>"><%= pagination[i] %></a></li>
+              <% } %>
+            <% } %>
+            <% if (currentPage < totalPages) { %>
+              <li class="page-item"><a class="page-link" href="/list/<%= currentPage + 1 %>">Next</a></li>
+            <% } %>
+          </ul>
+        </nav>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer"); -%>

@@ -177,6 +177,8 @@ td {
     visibility: collapse;
   }
   table {
+    margin-top: 0;
+    margin-bottom: 0;
     width: 300px;
   }
 }

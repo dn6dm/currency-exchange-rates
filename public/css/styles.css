@@ -173,8 +173,11 @@ td {
 }
 
 @media (max-width: 500px) {
+  .mobile-invisible {
+    visibility: collapse;
+  }
   table {
-    width: 300px;
+    width: 350px;
   }
 }
 

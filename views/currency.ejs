@@ -1,4 +1,4 @@
-<% include("partials/header"); %> <%- include("partials/header"); -%>
+<%- include("partials/header"); -%>
 
 <div class="container body-container">
   <div class="row">
@@ -33,7 +33,9 @@
                 <p><a href="/currency/<%= exchangeRates[i].asset_id_quote %>"><%= exchangeRates[i].asset_id_quote %></a></p>
               </td>
               <td>
-                <p><%= exchangeRates[i].rate %></p>
+                <% if (exchangeRates[i].rate) { %>
+                  <p><%= exchangeRates[i].rate.toFixed(10); %></p>
+                <% } %>
               </td>
             </tr>
             <% } %>
@@ -59,7 +61,9 @@
                 <p><a href="/currency/<%= exchangeRates[i].asset_id_quote %>"><%= exchangeRates[i].asset_id_quote %></a></p>
               </td>
               <td>
-                <p><%= exchangeRates[i].rate %></p>
+                <% if (exchangeRates[i].rate) { %>
+                  <p><%= exchangeRates[i].rate.toFixed(10); %></p>
+                <% } %>
               </td>
             </tr>
             <% } %>
@@ -70,4 +74,4 @@
   </div>
 </div>
 
-<%- include("partials/footer"); -%> <% include("partials/footer"); %>
+<% include("partials/footer"); %>

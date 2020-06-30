@@ -37,7 +37,9 @@
                 </p>
               </td>
               <td>
-                <p><%= allCurrencies[i].price_usd %></p>
+                <% if (allCurrencies[i].price_usd) { %>
+                  <p><%= allCurrencies[i].price_usd.toFixed(12); %></p>
+                <% } %>
               </td>
             </tr>
             <% } %>
@@ -67,7 +69,9 @@
                 </p>
               </td>
               <td>
-                <p><%= allCurrencies[i].price_usd %></p>
+                <% if (allCurrencies[i].price_usd) { %>
+                  <p><%= allCurrencies[i].price_usd.toFixed(12); %></p>
+                <% } %>
               </td>
             </tr>
             <% } %>
